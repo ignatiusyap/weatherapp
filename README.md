@@ -6,5 +6,6 @@ Possible future plans:
 - Create RestFUL API to a data base
 
 Assumption:
-1. A front end only app where the user data is stored in a state.
-2. App is used to per brower session per user only.
+1. A front end only app where the user data is stored in a React state.
+2. App is used per browser session per user only.
+3. Closing browser refreshes user data.
