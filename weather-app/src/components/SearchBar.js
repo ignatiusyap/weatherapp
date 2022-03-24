@@ -23,6 +23,8 @@ const SearchBar = () => {
           id="country-search-box"
         />
       </form>
+      <button onClick={}>Search</button>
+      <button onClick={}>Clear</button>
     </div>
   );
 };
