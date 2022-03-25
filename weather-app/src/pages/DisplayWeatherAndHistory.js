@@ -36,11 +36,16 @@ const DisplayWeatherAndHistory = () => {
         apiCallSearchButton={apiCallSearchButton}
         apiKeyValidation={apiKeyValidation}
       />
+      <h2>Today's Weather</h2>
       {searchFailedSwitch === false && (
-        <>
-          <TodayWeather todayWeatherDetail={todayWeatherDetail} />
-          <SearchHistory latestWeatherDetail={todayWeatherDetail} />
-        </>
+        <TodayWeather todayWeatherDetail={todayWeatherDetail} />
+      )}
+      <h2>Seach History</h2>
+      {searchFailedSwitch === false && (
+        <SearchHistory
+          latestWeatherDetail={todayWeatherDetail}
+          searchFailedSwitch={searchFailedSwitch}
+        />
       )}
     </div>
   );

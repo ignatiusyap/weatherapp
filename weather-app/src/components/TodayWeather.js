@@ -6,7 +6,7 @@ const TodayWeather = (props) => {
       <p>
         {today.name},{today.sys.country}
       </p>
-      <h2>{today.weather[0].main}</h2>
+      <h1>{today.weather[0].main}</h1>
       <p>
         <span>Description: </span>
         {today.weather[0].description}

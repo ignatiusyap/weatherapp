@@ -1,17 +1,16 @@
 import React from "react";
 
 const SearchHistoryEntry = ({ historyOfSearch }) => {
-  //   const listOfHistory = [];
-  //   historyOfSearch.map((each, index) => {
-  //     return listOfHistory.push(
-  //       <span>
-  //         {index + 1}
-  //         {each.name}
-  //       </span>
-  //     );
-  //   });
   return (
     <div>
+      {historyOfSearch?.map((each, index) => {
+        <span>
+          {index + 1}
+          {each.name}
+          {console.log(each)}
+        </span>;
+      })}
+
       <div>search</div>
       <div>Delete</div>
     </div>
