@@ -3,7 +3,11 @@ import React, { useContext } from "react";
 import Statecontext from "../context/state-context";
 import GetCurrentTime from "./GetCurrentTime";
 
-const SearchHistoryEntry = ({ historyOfSearch, deleteEntry }) => {
+const SearchHistoryEntry = ({
+  historyOfSearch,
+  deleteEntry,
+  setSearchFailedSwitch,
+}) => {
   const { setTodayWeatherDetail, apiKey } = useContext(Statecontext);
 
   const apiSearchEntry = (city, country) => {
@@ -13,6 +17,7 @@ const SearchHistoryEntry = ({ historyOfSearch, deleteEntry }) => {
       )
       .then((res) => {
         setTodayWeatherDetail(res.data);
+        setSearchFailedSwitch(false);
       })
       .catch((error) => {
         console.log(error);

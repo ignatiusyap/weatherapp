@@ -8,7 +8,7 @@ import SearchCityCountryFail from "../components/SearchCityCountryFail";
 //Statecontext used to allow the TodayWeather component to render in Search History Entry
 const DisplayWeatherAndHistory = () => {
   const [apiKeyValidation, setApiKeyValidation] = useState(true);
-  const [searchFailedSwitch, setSearchFailedSwtich] = useState("");
+  const [searchFailedSwitch, setSearchFailedSwitch] = useState("");
   const [activeSearchHistory, setActiveSearchHistory] = useState(false);
   const [todayWeatherDetail, setTodayWeatherDetail] = useState({});
   const [apiKey, setApiKey] = useState("");
@@ -21,7 +21,7 @@ const DisplayWeatherAndHistory = () => {
       )
       .then((res) => {
         setTodayWeatherDetail(res.data);
-        setSearchFailedSwtich(false);
+        setSearchFailedSwitch(false);
         setActiveSearchHistory(true);
       })
       .catch((error) => {
@@ -29,7 +29,7 @@ const DisplayWeatherAndHistory = () => {
           setApiKeyValidation(false);
         }
         if (error.response.status === 404) {
-          setSearchFailedSwtich(true);
+          setSearchFailedSwitch(true);
         }
         console.log(error);
       });
@@ -60,7 +60,7 @@ const DisplayWeatherAndHistory = () => {
         {activeSearchHistory === true && (
           <SearchHistory
             latestWeatherDetail={todayWeatherDetail}
-            searchFailedSwitch={searchFailedSwitch}
+            setSearchFailedSwitch={setSearchFailedSwitch}
             todayWeatherDisplay={
               searchFailedSwitch ? (
                 <SearchCityCountryFail />

@@ -14,12 +14,11 @@ const SearchHistory = (props) => {
       {props.todayWeatherDisplay}
       <h2>Search History</h2>
       <ol>
-        {props.searchFailedSwitch === false && (
-          <SearchHistoryEntry
-            historyOfSearch={historyOfSearch}
-            deleteEntry={setHistoryOfSearch}
-          />
-        )}
+        <SearchHistoryEntry
+          setSearchFailedSwitch={props.setSearchFailedSwitch}
+          historyOfSearch={historyOfSearch}
+          deleteEntry={setHistoryOfSearch}
+        />
       </ol>
     </div>
   );
