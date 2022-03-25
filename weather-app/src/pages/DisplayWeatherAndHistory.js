@@ -9,6 +9,7 @@ import SearchCityCountryFail from "../components/SearchCityCountryFail";
 const DisplayWeatherAndHistory = () => {
   const [apiKeyValidation, setApiKeyValidation] = useState(true);
   const [searchFailedSwitch, setSearchFailedSwtich] = useState("");
+  const [activeSearchHistory, setActiveSearchHistory] = useState(false);
   const [todayWeatherDetail, setTodayWeatherDetail] = useState({});
   const [apiKey, setApiKey] = useState("");
 
@@ -21,6 +22,7 @@ const DisplayWeatherAndHistory = () => {
       .then((res) => {
         setTodayWeatherDetail(res.data);
         setSearchFailedSwtich(false);
+        setActiveSearchHistory(true);
       })
       .catch((error) => {
         if (error.response.status === 401) {
@@ -45,15 +47,27 @@ const DisplayWeatherAndHistory = () => {
           apiKey={apiKey}
           setApiKey={setApiKey}
         />
-        {searchFailedSwitch === false && (
+        {/* {searchFailedSwitch === false && (
           <TodayWeather todayWeatherDetail={todayWeatherDetail} />
         )}
-        {searchFailedSwitch === true && <SearchCityCountryFail />}
-        <h2>Seach History</h2>
-        {searchFailedSwitch === false && (
+        {searchFailedSwitch === true && <SearchCityCountryFail />}*/}
+        {searchFailedSwitch === "" && (
+          <>
+            <h2>Search History</h2>
+            <p>No search history</p>
+          </>
+        )}
+        {activeSearchHistory === true && (
           <SearchHistory
             latestWeatherDetail={todayWeatherDetail}
             searchFailedSwitch={searchFailedSwitch}
+            todayWeatherDisplay={
+              searchFailedSwitch ? (
+                <SearchCityCountryFail />
+              ) : (
+                <TodayWeather todayWeatherDetail={todayWeatherDetail} />
+              )
+            }
           />
         )}
       </Statecontext.Provider>
