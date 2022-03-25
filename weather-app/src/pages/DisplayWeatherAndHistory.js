@@ -4,7 +4,8 @@ import SearchBar from "../components/SearchBar";
 import TodayWeather from "../components/TodayWeather";
 import SearchHistory from "../components/SearchHistory";
 import Statecontext from "../context/state-context";
-
+import SearchCityCountryFail from "../components/SearchCityCountryFail";
+//Statecontext used to allow the TodayWeather component to render in Search History Entry
 const DisplayWeatherAndHistory = () => {
   const [apiKeyValidation, setApiKeyValidation] = useState(true);
   const [searchFailedSwitch, setSearchFailedSwtich] = useState("");
@@ -22,16 +23,16 @@ const DisplayWeatherAndHistory = () => {
         setSearchFailedSwtich(false);
       })
       .catch((error) => {
-        console.log(error);
-        if (error === 401) {
+        if (error.response.status === 401) {
           setApiKeyValidation(false);
         }
-        if (error === 404) {
+        if (error.response.status === 404) {
           setSearchFailedSwtich(true);
         }
         console.log(error);
       });
   };
+  //Conditional rendering to prevent the componenet from loading when API call has not been done
   return (
     <div>
       <Statecontext.Provider
@@ -47,6 +48,7 @@ const DisplayWeatherAndHistory = () => {
         {searchFailedSwitch === false && (
           <TodayWeather todayWeatherDetail={todayWeatherDetail} />
         )}
+        {searchFailedSwitch === true && <SearchCityCountryFail />}
         <h2>Seach History</h2>
         {searchFailedSwitch === false && (
           <SearchHistory

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const SearchBar = (props) => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
-
+  //input state for searchbar is kept here to only allow this component to render upon input and not affect the other components
   const apiCallCredentials = { city: city, country: country };
   return (
     <div>
