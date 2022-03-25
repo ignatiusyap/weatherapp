@@ -59,7 +59,6 @@ const SearchBar = (props) => {
           Clear
         </button>
       </div>
-      {console.log(apiCallCredentials)}
     </div>
   );
 };

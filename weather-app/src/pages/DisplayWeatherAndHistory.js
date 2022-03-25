@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SearchBar from "../components/SearchBar";
 import TodayWeather from "../components/TodayWeather";
-import SearchResults from "../components/SearchResults";
+import SearchHistory from "../components/SearchHistory";
 
 const DisplayWeatherAndHistory = () => {
   const [apiKeyValidation, setApiKeyValidation] = useState(true);
-  const [searchFailedSwitch, setSearchFailedSwtich] = useState(false);
+  const [searchFailedSwitch, setSearchFailedSwtich] = useState("");
+  const [todayWeatherDetail, setTodayWeatherDetail] = useState({});
+
   //Fetch the results from API from input fields upon button click
   const apiCallSearchButton = (apiCallCredentials) => {
     axios
@@ -14,7 +16,8 @@ const DisplayWeatherAndHistory = () => {
         `https://api.openweathermap.org/data/2.5/weather?q=${apiCallCredentials.city},${apiCallCredentials.country}&appid=${apiCallCredentials.apiKey}`
       )
       .then((res) => {
-        console.log(res.data);
+        setTodayWeatherDetail(res.data);
+        setSearchFailedSwtich(false);
       })
       .catch((error) => {
         console.log(error);
@@ -24,6 +27,7 @@ const DisplayWeatherAndHistory = () => {
         if (error === 404) {
           setSearchFailedSwtich(true);
         }
+        console.log(error);
       });
   };
   return (
@@ -32,7 +36,12 @@ const DisplayWeatherAndHistory = () => {
         apiCallSearchButton={apiCallSearchButton}
         apiKeyValidation={apiKeyValidation}
       />
-      <SearchResults />
+      {searchFailedSwitch === false && (
+        <>
+          <TodayWeather todayWeatherDetail={todayWeatherDetail} />
+          <SearchHistory latestWeatherDetail={todayWeatherDetail} />
+        </>
+      )}
     </div>
   );
 };
