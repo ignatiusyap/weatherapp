@@ -3,9 +3,8 @@ import React, { useState } from "react";
 const SearchBar = (props) => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
-  const [apiKey, setApiKey] = useState("");
 
-  const apiCallCredentials = { city: city, country: country, apiKey: apiKey };
+  const apiCallCredentials = { city: city, country: country };
   return (
     <div>
       <div className="api-key">
@@ -13,9 +12,9 @@ const SearchBar = (props) => {
           <label htmlFor="api-key-box">Api Key: </label>
           <input
             type="text"
-            value={apiKey}
+            value={props.apiKey}
             onChange={(event) => {
-              setApiKey(event.target.value);
+              props.setApiKey(event.target.value);
             }}
             id="api-key-box"
           />
@@ -45,7 +44,7 @@ const SearchBar = (props) => {
         </form>
         <button
           onClick={() => {
-            props.apiCallSearchButton(apiCallCredentials);
+            props.apiCallSearchButton(apiCallCredentials, props.apiKey);
           }}
         >
           Search
