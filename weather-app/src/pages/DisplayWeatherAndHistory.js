@@ -38,13 +38,13 @@ const DisplayWeatherAndHistory = () => {
       <Statecontext.Provider
         value={{ todayWeatherDetail, setTodayWeatherDetail, apiKey }}
       >
+        <h2>Today's Weather</h2>
         <SearchBar
           apiCallSearchButton={apiCallSearchButton}
           apiKeyValidation={apiKeyValidation}
           apiKey={apiKey}
           setApiKey={setApiKey}
         />
-        <h2>Today's Weather</h2>
         {searchFailedSwitch === false && (
           <TodayWeather todayWeatherDetail={todayWeatherDetail} />
         )}

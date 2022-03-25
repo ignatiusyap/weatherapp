@@ -1,8 +1,9 @@
 import GetCurrentDate from "./GetCurrentDate";
+import GetCurrentTime from "./GetCurrentTime";
 
 const TodayWeather = (props) => {
   const today = props.todayWeatherDetail;
-
+  //span used for inline element
   return (
     <div>
       <p>
@@ -21,9 +22,10 @@ const TodayWeather = (props) => {
         <span>Humidity: </span>
         {today.main.humidity} %
       </p>
-      <p>
+      <span>
         <GetCurrentDate />
-      </p>
+        <GetCurrentTime />
+      </span>
     </div>
   );
 };

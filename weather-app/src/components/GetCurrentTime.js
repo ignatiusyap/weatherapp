@@ -1,9 +1,11 @@
 import React from "react";
 
 const GetCurrentTime = () => {
+  let newDate = new Date();
+  let currentTime = newDate.toLocaleTimeString("en-US");
   return (
     <>
-      <span></span>
+      <span>{currentTime}</span>
     </>
   );
 };
