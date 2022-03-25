@@ -1,3 +1,5 @@
+import GetCurrentDate from "./GetCurrentDate";
+
 const TodayWeather = (props) => {
   const today = props.todayWeatherDetail;
 
@@ -19,7 +21,9 @@ const TodayWeather = (props) => {
         <span>Humidity: </span>
         {today.main.humidity} %
       </p>
-      <p></p>
+      <p>
+        <GetCurrentDate />
+      </p>
     </div>
   );
 };

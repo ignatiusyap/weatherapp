@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useContext } from "react";
 import Statecontext from "../context/state-context";
+import GetCurrentTime from "./GetCurrentTime";
 
 const SearchHistoryEntry = ({ historyOfSearch, deleteEntry }) => {
   const { setTodayWeatherDetail, apiKey } = useContext(Statecontext);
@@ -32,6 +33,9 @@ const SearchHistoryEntry = ({ historyOfSearch, deleteEntry }) => {
               {each.name}, {each.sys.country}
             </span>
             <div>
+              <span>
+                <GetCurrentTime />
+              </span>
               <button
                 onClick={() => apiSearchEntry(each.name, each.sys.country)}
               >
