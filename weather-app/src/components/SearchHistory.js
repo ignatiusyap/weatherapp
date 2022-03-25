@@ -12,11 +12,12 @@ const SearchHistory = (props) => {
     <div>
       <ol>
         {props.searchFailedSwitch === false && (
-          <SearchHistoryEntry historyOfSearch={historyOfSearch} />
+          <SearchHistoryEntry
+            historyOfSearch={historyOfSearch}
+            deleteEntry={setHistoryOfSearch}
+          />
         )}
       </ol>
-
-      {console.log(historyOfSearch)}
     </div>
   );
 };
