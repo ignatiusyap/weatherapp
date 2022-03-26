@@ -20,3 +20,4 @@ API call used from OpenWeather:
 Current Weather Data. Only API that allows you to get data from different locations.
 Others are not used as they display the forecast.
 
+To start download the file and npm i followed by npm start
