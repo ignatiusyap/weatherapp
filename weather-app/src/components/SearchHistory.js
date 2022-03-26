@@ -10,7 +10,6 @@ const SearchHistory = (props) => {
 
   return (
     <div>
-      {console.log(historyOfSearch, latest)}
       {props.todayWeatherDisplay}
       <h2>Search History</h2>
       <ol>

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-
+import "./css/searchbar.css";
 const SearchBar = (props) => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   //input state for searchbar is kept here to only allow this component to render upon input and not affect the other components
   const apiCallCredentials = { city: city, country: country };
   return (
-    <div>
-      <div className="api-key">
+    <div className="search-bar-container">
+      <div className="user-input-box">
         <form>
           <label htmlFor="api-key-box">Api Key: </label>
           <input
@@ -21,7 +21,7 @@ const SearchBar = (props) => {
         </form>
         {props.apiKeyValidation === false && <p>Api key error</p>}
       </div>
-      <div className="search-bar">
+      <div className="user-input-box">
         <form>
           <label htmlFor="city-search-box">City: </label>
           <input
@@ -42,21 +42,23 @@ const SearchBar = (props) => {
             id="country-search-box"
           />
         </form>
-        <button
-          onClick={() => {
-            props.apiCallSearchButton(apiCallCredentials, props.apiKey);
-          }}
-        >
-          Search
-        </button>
-        <button
-          onClick={() => {
-            setCity("");
-            setCountry("");
-          }}
-        >
-          Clear
-        </button>
+        <div className="search-box-buttons">
+          <button
+            onClick={() => {
+              props.apiCallSearchButton(apiCallCredentials, props.apiKey);
+            }}
+          >
+            Search
+          </button>
+          <button
+            onClick={() => {
+              setCity("");
+              setCountry("");
+            }}
+          >
+            Clear
+          </button>
+        </div>
       </div>
     </div>
   );

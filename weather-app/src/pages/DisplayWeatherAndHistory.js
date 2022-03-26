@@ -46,7 +46,7 @@ const DisplayWeatherAndHistory = () => {
   };
   //Conditional rendering to prevent the componenet from loading when API call has not been done
   return (
-    <div>
+    <div className="weather-app">
       <Statecontext.Provider
         value={{ todayWeatherDetail, setTodayWeatherDetail, apiKey }}
       >
@@ -57,10 +57,6 @@ const DisplayWeatherAndHistory = () => {
           apiKey={apiKey}
           setApiKey={setApiKey}
         />
-        {/* {searchFailedSwitch === false && (
-          <TodayWeather todayWeatherDetail={todayWeatherDetail} />
-        )}
-        {searchFailedSwitch === true && <SearchCityCountryFail />}*/}
         {searchFailedSwitch === "" && (
           <>
             <h2>Search History</h2>
@@ -88,14 +84,6 @@ const DisplayWeatherAndHistory = () => {
           />
         )}
       </Statecontext.Provider>
-      {console.log(
-        searchFailedSwitch,
-        "searchfailed",
-        activeSearchHistory,
-        "active",
-        todayWeatherDetail,
-        "todaydetail"
-      )}
     </div>
   );
 };
