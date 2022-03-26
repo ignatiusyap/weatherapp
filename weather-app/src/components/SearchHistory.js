@@ -5,12 +5,12 @@ const SearchHistory = (props) => {
   const latest = props.latestWeatherDetail;
 
   useEffect(() => {
-    setHistoryOfSearch([...historyOfSearch, latest]);
+    setHistoryOfSearch((prevState) => [...prevState, latest]);
   }, [latest]);
 
   return (
     <div>
-      {console.log(historyOfSearch)}
+      {console.log(historyOfSearch, latest)}
       {props.todayWeatherDisplay}
       <h2>Search History</h2>
       <ol>

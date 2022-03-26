@@ -24,14 +24,14 @@ const SearchHistoryEntry = ({
       });
   };
 
-  const deleteSearchEntry = (index) => {
+  const deleteSearchEntry = (index, arr) => {
     deleteEntry((prevState) =>
       prevState.filter((element, indexOther) => indexOther !== index)
     );
   };
   return (
     <>
-      {historyOfSearch?.map((each, index) => {
+      {historyOfSearch?.map((each, index, arr) => {
         return (
           <li key={index} id={index}>
             <span>
@@ -46,7 +46,9 @@ const SearchHistoryEntry = ({
               >
                 Search
               </button>
-              <button onClick={() => deleteSearchEntry(index)}>Delete</button>
+              <button onClick={() => deleteSearchEntry(index, arr)}>
+                Delete
+              </button>
             </div>
           </li>
         );
